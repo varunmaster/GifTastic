@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GifTastic | Varun Master</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+</head>
+
+<body>
+    <h1>Movie Search</h1>
+
+    <!-- Rendered Buttons will get Dumped Here  -->
+    <div id="buttons-view"></div>
+
+    <form id="movie-form">
+        <label for="movie-input">Add a Movie, Yo!</label>
+        <!--the for is what tells the browser to put the focus on the box-->
+        <input type="text" id="movie-input">
+        <br>
+
+        <!-- Button triggers new movie to be added -->
+        <input id="add-movie" type="submit" value="Add a Movie, Yo!">
+    </form>
+
+    <!-- Movies will Get Dumped Here -->
+    <div id="movies-view"></div>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
