@@ -28,7 +28,8 @@ function renderButtons() {
         //console.log("item " + i + ": " + result[i]);
         var div = $("<div>");
         div.attr("data-animal", userQUery);
-        div.addClass("gif");
+        div.attr("type", "gif");
+        div.addClass("col-sm-4");
         var rating = $("<p>");
         rating.text("Rating: " + result[i].rating);
         var img = $("<img>");
