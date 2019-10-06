@@ -8,5 +8,10 @@ button {
 }
 
 body {
-    background-color: turquoise;
+    background-color: #FFFFD1;
+}
+
+.card {
+    width: 400px;
+    height: 500px;
 }
