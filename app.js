@@ -12,7 +12,7 @@ function renderButtons() {
     }
   }
 
-  $("#buttons-view").on("click",".animal", function() { //must use way of onClick because we are dynamically generating .animal buttons. https://stackoverflow.com/questions/8110934/direct-vs-delegated-jquery-on/8111171#8111171
+  $("#buttons-view").on("click",".animal", function() { //must use this way of onClick because we are dynamically generating .animal buttons. https://stackoverflow.com/questions/8110934/direct-vs-delegated-jquery-on/8111171#8111171
     //console.log("Hello");
     $("#animal-view").empty(); //emptying the section that holds the animal gifs
     var userQUery = $(this).attr("data-animal");
@@ -29,30 +29,28 @@ function renderButtons() {
         var div = $("<div>");
         div.attr("data-animal", userQUery);
         div.addClass("gif");
+        var rating = $("<p>");
+        rating.text("Rating: " + result[i].rating);
         var img = $("<img>");
-        img.attr("src",result[i].images["480w_still"].url); //using the square brackets bc need to reference a number object property
-        img.attr("data-still", result[i].images["480w_still"].url);
+        img.attr("src",result[i].images.downsized_still.url); //using the square brackets bc need to reference a number object property
+        img.attr("data-still", result[i].images.downsized_still.url);
         img.attr("data-animate", result[i].images.downsized.url);
         img.attr("data-state", "still");
         img.attr("class", "gif");
-        div.append(img);
-        $("#animal-view").append(div);
+        div.append(rating,img);
+        $("#animal-view").append(div,"<br>");
       }
     });//end api call here
   });//end animal.click here
 
-  $("#animal-view").on("click",".gif", function() {
-    
+  $("#animal-view").on("click",".gif", function() { //using the click function to animate/un-animate gifs
     var state = $(this).attr("data-state");
     if(state === "still") {
-      var animate = $(this).attr("data-animate");
-      
-      $(this).attr("src",animate);
+      $(this).attr("src",$(this).attr("data-animate"));
       $(this).attr("data-state","animate")
     }
     else if(state === "animate") {
-      var still = $(this).attr("data-still");
-      $(this).attr("src",still);
+      $(this).attr("src",$(this).attr("data-still"));
       $(this).attr("data-state","still");
     }
   });//end trigger-animation clicks
