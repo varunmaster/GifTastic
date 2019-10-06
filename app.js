@@ -5,7 +5,8 @@ function renderButtons() {
 
     for (var i = 0; i < animals.length; i++) {
       var a = $("<button>");
-      a.addClass("animal");
+      a.attr("type","animal");
+      a.addClass("btn btn-info animal");
       a.attr("data-animal", animals[i]);
       a.text(animals[i]);
       $("#buttons-view").append(a);
@@ -28,8 +29,8 @@ function renderButtons() {
         //console.log("item " + i + ": " + result[i]);
         var div = $("<div>");
         div.attr("data-animal", userQUery);
-        div.attr("type", "gif");
-        div.addClass("col-sm-4");
+        div.attr("id", "gif");
+        div.addClass("rounded mx-auto d-block col-sm-4 gif");
         var rating = $("<p>");
         rating.text("Rating: " + result[i].rating);
         var img = $("<img>");
@@ -39,7 +40,7 @@ function renderButtons() {
         img.attr("data-state", "still");
         img.attr("class", "gif");
         div.append(rating,img);
-        $("#animal-view").append(div,"<br>");
+        $("#animal-view").append(div,);
       }
     });//end api call here
   });//end animal.click here
@@ -61,7 +62,7 @@ function renderButtons() {
     var animal = $("#animal-input").val().trim(); 
     animals.push(animal);
     renderButtons();
-    console.log("hello");
+    // console.log("hello");
   });//end add-animal.click here
 
   renderButtons();
