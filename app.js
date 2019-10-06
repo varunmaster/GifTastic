@@ -12,17 +12,17 @@ function renderButtons() {
     }
   }
 
-  $(".animal").on("click", function() {
+  $("#buttons-view").on("click",".animal", function() { //must use way of onClick because we are dynamically generating .animal buttons. https://stackoverflow.com/questions/8110934/direct-vs-delegated-jquery-on/8111171#8111171
     console.log("Hello");
-    // var userQUery = $(this).attr("data-animal");
-    // var APIEndPoint = "https://api.giphy.com/v1/gifs/search?api_key=dEWru3fa3EkK5GoZcNHpROm3KoRhgCMv&q=" + userQUery;
-    // console.log(userQUery);
-    // $.ajax({
-    //   url: APIEndPoint,
-    //   method: "GET"
-    // }).then(function(res){
-    //   console.log(res);
-    // });//end api call here
+    var userQUery = $(this).attr("data-animal");
+    var APIEndPoint = "https://api.giphy.com/v1/gifs/search?api_key=dEWru3fa3EkK5GoZcNHpROm3KoRhgCMv&q=" + userQUery;
+    console.log(userQUery);
+    $.ajax({
+      url: APIEndPoint,
+      method: "GET"
+    }).then(function(res){
+      console.log(res);
+    });//end api call here
   });//end animal.click here
 
   $("#add-animal").on("click", function(event) {
