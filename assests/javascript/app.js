@@ -34,7 +34,7 @@ function renderButtons() {
         var rating = $("<p>");
         rating.text("Rating: " + result[i].rating);
         var img = $("<img>");
-        img.attr("src",result[i].images.fixed_width_still.url); //using the square brackets bc need to reference a number object property
+        img.attr("src",result[i].images.fixed_width_still.url); 
         img.attr("data-still", result[i].images.fixed_width_still.url);
         img.attr("data-animate", result[i].images.fixed_width.url);
         img.attr("data-state", "still");
