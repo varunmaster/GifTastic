@@ -1,22 +1,22 @@
-var animals = ["dogs", "cats", "elephants", "ferrets", "bunny", "hamsters"];
+var vacations = ["Toronto", "Lisbon", "Jamaica", "Tel Aviv", "Galapagos Islands", "Lapland", "Bahamas"];
 
 function renderButtons() {
     $("#buttons-view").empty();
 
-    for (var i = 0; i < animals.length; i++) {
+    for (var i = 0; i < vacations.length; i++) {
       var a = $("<button>");
-      a.attr("type","animal");
-      a.addClass("btn btn-info animal");
-      a.attr("data-animal", animals[i]);
-      a.text(animals[i]);
+      a.attr("type","vacation");
+      a.addClass("btn btn-info vacation");
+      a.attr("data-vacation", vacations[i]);
+      a.text(vacations[i]);
       $("#buttons-view").append(a);
     }
   }
 
-  $("#buttons-view").on("click",".animal", function() { //must use this way of onClick because we are dynamically generating .animal buttons. https://stackoverflow.com/questions/8110934/direct-vs-delegated-jquery-on/8111171#8111171
+  $("#buttons-view").on("click",".vacation", function() { //must use this way of onClick because we are dynamically generating .vacation buttons. https://stackoverflow.com/questions/8110934/direct-vs-delegated-jquery-on/8111171#8111171
     //console.log("Hello");
-    $("#animal-view").empty(); //emptying the section that holds the animal gifs
-    var userQUery = $(this).attr("data-animal");
+    $("#vacation-view").empty(); //emptying the section that holds the vacation gifs
+    var userQUery = $(this).attr("data-vacation");
     var APIEndPoint = "https://api.giphy.com/v1/gifs/search?api_key=dEWru3fa3EkK5GoZcNHpROm3KoRhgCMv&limit=10&q=" + userQUery;
     //console.log(userQUery);
     $.ajax({
@@ -28,7 +28,7 @@ function renderButtons() {
       for(var i = 0; i < result.length; i++) {
         //console.log("item " + i + ": " + result[i]);
         var div = $("<div>");
-        div.attr("data-animal", userQUery);
+        div.attr("data-vacation", userQUery);
         div.attr("id", "gif");
         div.addClass("rounded mx-auto d-block col-sm-4 gif");
         var rating = $("<p>");
@@ -40,12 +40,12 @@ function renderButtons() {
         img.attr("data-state", "still");
         img.attr("class", "gif");
         div.append(rating,img);
-        $("#animal-view").append(div,);
+        $("#vacation-view").append(div,);
       }
     });//end api call here
-  });//end animal.click here
+  });//end vacation.click here
 
-  $("#animal-view").on("click",".gif", function() { //using the click function to animate/un-animate gifs
+  $("#vacation-view").on("click",".gif", function() { //using the click function to animate/un-animate gifs
     var state = $(this).attr("data-state");
     if(state === "still") {
       $(this).attr("src",$(this).attr("data-animate"));
@@ -57,14 +57,14 @@ function renderButtons() {
     }
   });//end trigger-animation clicks
 
-  $("#add-animal").on("click", function(event) {
+  $("#add-vacation").on("click", function(event) {
     event.preventDefault(); //preventDefault is telling the browser to not refresh the page after a user adds a movie. when it refreshes the page, the movie that the user put in will disappear
-    var animal = $("#animal-input").val().trim(); 
-    animals.push(animal);
+    var vacation = $("#vacation-input").val().trim(); 
+    vacations.push(vacation);
     renderButtons();
-    $("#animal-input").val("");
+    $("#vacation-input").val("");
     // console.log("hello");
-  });//end add-animal.click here
+  });//end add-vacation.click here
 
   renderButtons();
 
