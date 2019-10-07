@@ -62,6 +62,7 @@ function renderButtons() {
     var animal = $("#animal-input").val().trim(); 
     animals.push(animal);
     renderButtons();
+    $("#animal-input").val("");
     // console.log("hello");
   });//end add-animal.click here
 
