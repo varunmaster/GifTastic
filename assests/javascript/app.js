@@ -17,7 +17,7 @@ function renderButtons() {
     //console.log("Hello");
     $("#vacation-view").empty(); //emptying the section that holds the vacation gifs
     var userQUery = $(this).attr("data-vacation");
-    var APIEndPoint = "https://api.giphy.com/v1/gifs/search?api_key=dEWru3fa3EkK5GoZcNHpROm3KoRhgCMv&limit=10&q=" + userQUery;
+    var APIEndPoint = "https://api.giphy.com/v1/gifs/search?api_key=dEWru3fa3EkK5GoZcNHpROm3KoRhgCMv&limit=10&rating=g&q=" + userQUery;
     //console.log(userQUery);
     $.ajax({
       url: APIEndPoint,
